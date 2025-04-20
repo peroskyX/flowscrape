@@ -5,10 +5,11 @@ import { waitFor } from "@/lib/helper/waitFor";
 import { AlertCircle, InboxIcon } from "lucide-react";
 import React, { Suspense } from "react";
 import CreateWorkflowDialogue from "./_components/CreateWorkflowDialogue";
+import WorkflowCard from "./_components/WorkflowCard";
 
 function page() {
   return (
-    <div className="flex-1 flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full p-6">
       <div className="flex justify-between">
         <div className="flex flex-col">
           <h1 className="text-3xl font-bold">Workflows</h1>
@@ -67,7 +68,13 @@ async function UserWorkflows() {
       </div>
     )
   }
-  return <div className="grid grid-cols-1 gap-4">hp</div>
+  return (
+    <div className="grid grid-cols-1 ">
+      {workflows.map((workflow) => (
+        <WorkflowCard key={workflow.id} workflow={workflow} />
+      ))}
+    </div>
+  )
 }
 
 export default page;

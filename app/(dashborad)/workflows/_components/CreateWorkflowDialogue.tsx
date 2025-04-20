@@ -14,7 +14,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useMutation } from '@tanstack/react-query';
 import { createWorkflow } from '@/actions/workflows/createWorkflow';
-import { Toast } from '@/components/ui/toast';
+import { toast } from 'sonner';
 
 function CreateWorkflowDialogue({ triggerText }: { triggerText?: string }) {
   const [open, setOpen] = useState(false);
@@ -27,10 +27,10 @@ function CreateWorkflowDialogue({ triggerText }: { triggerText?: string }) {
   const { mutate, isPending} = useMutation({
     mutationFn: createWorkflow,
     onSuccess: () => {
-      Toast.success("workflow created", {id: "create-workflow"});
+      toast.success("workflow created", {id: "create-workflow"});
     },
     onError: () => {
-      Toast.error("failed to create workflow", {id: "create-workflow"});
+      toast.error("failed to create workflow", {id: "create-workflow"});
     },
   })
 
